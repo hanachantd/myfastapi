@@ -1,0 +1,58 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Google Sheets Writer API",
+    "version": "1.0.0",
+    "description": "指定のスプレッドシートのタブに、値を書き込むAPIです。"
+  },
+  "servers": [
+    {
+      "url": "https://6c01-118-87-106-15.ngrok-free.app"
+    }
+  ],
+  "paths": {
+    "/write_cell": {
+      "post": {
+        "operationId": "writeCell",
+        "summary": "指定セルに値を書き込む",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sheet_name": {
+                    "type": "string",
+                    "description": "書き込むタブの名前"
+                  },
+                  "row": {
+                    "type": "integer",
+                    "description": "行番号（1始まり）"
+                  },
+                  "col": {
+                    "type": "integer",
+                    "description": "列番号（1始まり）"
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "書き込む文字列"
+                  }
+                },
+                "required": ["sheet_name", "row", "col", "value"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "正常に書き込まれました"
+          },
+          "500": {
+            "description": "エラーが発生しました"
+          }
+        }
+      }
+    }
+  }
+}
