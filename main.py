@@ -1,9 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import os
 import base64
+
+# .well-known を静的に配信できるようにする
+app.mount("/.well-known", StaticFiles(directory=".well-known"), name="well-known")
 
 app = FastAPI()
 
