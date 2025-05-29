@@ -10,11 +10,11 @@ import base64
 
 app = FastAPI()
 
-# .well-known を静的に配信できるようにする
-app.mount("/.well-known", StaticFiles(directory=".well-known"), name="well-known")
+# # .well-known を静的に配信できるようにする
+# app.mount("/.well-known", StaticFiles(directory=".well-known"), name="well-known")
 
-# 追加：ルート直下のロゴ配信
-app.mount("/", StaticFiles(directory="."), name="static")
+# # 追加：ルート直下のロゴ配信
+# app.mount("/", StaticFiles(directory="."), name="static")
 
 # client_secret.json を環境変数から復元（Render用）
 b64 = os.environ.get("GOOGLE_CREDENTIALS_B64")
