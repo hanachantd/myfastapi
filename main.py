@@ -7,10 +7,12 @@ from oauth2client.service_account import ServiceAccountCredentials
 import os
 import base64
 
+
+app = FastAPI()
+
 # .well-known を静的に配信できるようにする
 app.mount("/.well-known", StaticFiles(directory=".well-known"), name="well-known")
 
-app = FastAPI()
 
 # client_secret.json を環境変数から復元（Render用）
 b64 = os.environ.get("GOOGLE_CREDENTIALS_B64")
